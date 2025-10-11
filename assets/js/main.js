@@ -1,4 +1,3 @@
---- assets/js/main.js ---
 // Small behaviour: year + theme toggle
 (function(){
 const yearEl = document.getElementById('year');
