@@ -1,0 +1,22 @@
+--- assets/css/styles.css ---
+:root{
+--bg:#ffffff; --text:#111827; --muted:#6b7280; --accent:#2563eb;
+}
+[data-theme="dark"]{ --bg:#0b1220; --text:#e6eef8; --muted:#94a3b8; --accent:#60a5fa }
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;background:var(--bg);color:var(--text);line-height:1.5}
+.container{max-width:980px;margin:0 auto;padding:2rem}
+.site-header{border-bottom:1px solid rgba(0,0,0,0.06);position:sticky;top:0;backdrop-filter:saturate(120%) blur(6px);background:rgba(255,255,255,0.6)}
+[data-theme="dark"] .site-header{background:rgba(5,8,12,0.6)}
+.site-header .container{display:flex;align-items:center;gap:1rem}
+.brand{margin:0;font-size:1.1rem}
+.site-nav{margin-left:auto;display:flex;gap:1rem}
+.site-nav a{color:var(--muted);text-decoration:none}
+.hero{padding:4rem 0;text-align:left}
+.lead{color:var(--muted);font-size:1.05rem}
+.btn{display:inline-block;padding:.6rem 1rem;border-radius:8px;background:var(--accent);color:white;text-decoration:none}
+.section{padding:2rem 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.card{padding:1rem;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+.site-footer{border-top:1px solid rgba(0,0,0,0.06);padding:1rem 0;text-align:center;color:var(--muted)}
+@media(min-width:720px){.hero{padding:6rem 0;text-align:center}.site-nav{gap:1.25rem}}
