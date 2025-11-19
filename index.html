@@ -1,381 +1,444 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chintan Jansari - Portfolio</title>
-    <!-- Load Tailwind CSS -->
+    <title>Chintan Jansari | Mechanical Engineer & Computational Researcher</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a', // Slate 900
+                        secondary: '#334155', // Slate 700
+                        accent: '#0ea5e9', // Sky 500
+                        light: '#f8fafc', // Slate 50
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Define Custom Colors */
-        :root {
-            --bg-dark: #100f27; /* Deep Navy/Purple */
-            --card-dark: #1a1937; /* Slightly lighter card background */
-            --accent-pink: #E95995; /* Bright Magenta Accent */
-            --text-light: #F3F4F6;
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
         }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-        }
-
-        /* Styling for the unique card border/shape */
-        .unique-card {
-            border-radius: 1.5rem; /* Large initial rounding */
-            border: 1px solid var(--accent-pink); /* Accent border */
-            background-color: var(--card-dark);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), 0 0 15px rgba(233, 89, 149, 0.1); /* Subtle glow */
-        }
-
-        /* Specific style for the top-left accent circle on some cards */
-        .card-accent-top-left::before {
+        .timeline-line::before {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            width: 25px;
-            height: 25px;
-            background-color: var(--accent-pink);
-            border-radius: 50%;
-            z-index: 10;
-        }
-
-        /* Style for the skill/tool tags */
-        .skill-tag {
-            background-color: rgba(233, 89, 149, 0.15); /* Light accent background */
-            color: var(--accent-pink);
-            padding: 0.25rem 0.75rem;
-            border-radius: 0.5rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .skill-tag:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 2px 5px rgba(233, 89, 149, 0.3);
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
         }
     </style>
 </head>
-<body class="p-4 md:p-8 lg:p-12">
+<body class="bg-slate-50 text-slate-800 antialiased">
 
-    <!-- Header / Navigation -->
-    <header class="flex justify-between items-center pb-12 text-sm lg:text-base">
-        <div class="text-xl font-bold text-gray-50">Chintan Jansari</div>
-        <nav class="hidden lg:flex space-x-8 text-gray-400">
-            <a href="#about" class="hover:text-white transition duration-200">About</a>
-            <a href="#experience" class="hover:text-white transition duration-200">Experience</a>
-            <a href="#publications" class="hover:text-white transition duration-200">Publications</a>
-            <a href="#projects" class="hover:text-white transition duration-200">Projects</a>
-            <a href="#outreach" class="hover:text-white transition duration-200">Outreach</a>
-            <a href="#contact" class="hover:text-white transition duration-200">Contact</a>
-            <a href="#story" class="hover:text-white transition duration-200">Story</a>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="about" class="flex flex-col lg:flex-row items-start gap-12 pb-24">
-        
-        <!-- Left Column: Bio -->
-        <div class="lg:w-3/5 space-y-6 text-gray-300">
-            <p class="text-lg leading-relaxed">
-                <span class="font-semibold text-white">PhD-trained Computational Engineer</span> with 8+ years of experience in physics-based simulations, finite element modeling, topology optimization, and computational design. Expert at explicit C++/Cuda and Python programming, development of high-performance solvers, and robust parametrization workflows.
-            </p>
-            <p class="text-base leading-relaxed">
-                Expert at explicit C++/Cuda and Python programming, developing scalable, high-performance solutions. Expertise includes: finite element modeling, topology optimization, multiphysics simulation, additive manufacturing, data analysis, and advanced numerical methods. Proficient in Python, C++, MATLAB, and numerical algorithms, with experience translating complex scientific requirements into production-ready software, leading mentoring teams, developing reusable CAD work-flows, and bridging academic research with industrial product development for scalable, high-performance solutions.
-            </p>
-            <!-- Social Links -->
-            <div class="flex flex-wrap items-center gap-6 pt-4 text-gray-400">
-                <a href="#" class="hover:text-white transition duration-200" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                <a href="#" class="hover:text-white transition duration-200" aria-label="Google Scholar"><i data-lucide="graduation-cap" class="w-5 h-5"></i></a>
-                <a href="#" class="hover:text-white transition duration-200" aria-label="ResearchGate"><i data-lucide="book-open-check" class="w-5 h-5"></i></a>
-                <a href="#" class="hover:text-white transition duration-200" aria-label="GitHub"><i data-lucide="github" class="w-5 h-5"></i></a>
-                <a href="#" class="hover:text-white transition duration-200" aria-label="ORCID"><i data-lucide="dribbble" class="w-5 h-5"></i></a>
-                <a href="#" class="hover:text-white transition duration-200" aria-label="CV Link"><span class="border border-gray-400 px-3 py-1 rounded-full text-xs font-medium">CV</span></a>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-primary tracking-tight">CJ<span class="text-accent">.</span></a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-slate-600 hover:text-accent transition-colors font-medium">About</a>
+                    <a href="#experience" class="text-slate-600 hover:text-accent transition-colors font-medium">Experience</a>
+                    <a href="#skills" class="text-slate-600 hover:text-accent transition-colors font-medium">Skills</a>
+                    <a href="#education" class="text-slate-600 hover:text-accent transition-colors font-medium">Education</a>
+                    <a href="#contact" class="px-4 py-2 rounded-md bg-primary text-white hover:bg-slate-800 transition-colors text-sm font-semibold">Contact Me</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-slate-600 hover:text-slate-900 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-accent hover:bg-slate-50">About</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-accent hover:bg-slate-50">Experience</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-accent hover:bg-slate-50">Skills</a>
+                <a href="#education" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-accent hover:bg-slate-50">Education</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-accent font-bold">Contact Me</a>
+            </div>
+        </div>
+    </nav>
 
-        <!-- Right Column: Profile Card -->
-        <div class="lg:w-2/5 w-full bg-[#1a1937] p-8 rounded-3xl shadow-2xl relative overflow-hidden">
-            <div class="flex flex-col items-center text-center space-y-6">
-                <!-- Profile Image -->
-                <div class="w-36 h-36 rounded-full border-4 border-gray-700 overflow-hidden shadow-xl">
-                    <!-- Placeholder image URL mimicking the user's uploaded image -->
-                    <img src="https://placehold.co/144x144/2c2c54/E95995?text=CJ" 
-                         alt="Chintan Jansari Profile" 
-                         class="w-full h-full object-cover">
+    <!-- Hero Section -->
+    <section id="about" class="pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="flex-1 text-center lg:text-left">
+                    <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-accent uppercase bg-sky-50 rounded-full border border-sky-100">
+                        Based in Delft, Netherlands
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-bold text-primary mb-4 leading-tight">
+                        Chintan Jansari
+                    </h1>
+                    <h2 class="text-xl lg:text-2xl text-slate-500 font-medium mb-6">
+                        Mechanical Engineer & Computational Researcher
+                    </h2>
+                    <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        PhD-trained specialist with 8+ years of experience in composite structures, FEA, and stress modeling. 
+                        Expert in end-to-end product development from numerical simulation and optimization to prototyping and mechanical testing.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="#contact" class="px-6 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-slate-800 transition-all shadow-lg shadow-slate-200 transform hover:-translate-y-0.5">
+                            Get in Touch
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=0009-0003-4100-1165" target="_blank" class="px-6 py-3 rounded-lg bg-white text-slate-700 border border-slate-200 font-semibold hover:border-accent hover:text-accent transition-all shadow-sm flex items-center gap-2">
+                            <i class="fas fa-graduation-cap"></i> Google Scholar
+                        </a>
+                        <a href="https://www.linkedin.com/in/chintan-jansari-009578170" target="_blank" class="px-4 py-3 rounded-lg bg-[#0077b5] text-white font-semibold hover:bg-[#006097] transition-all shadow-sm">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <h1 class="text-3xl font-bold text-white">Chintan Jansari</h1>
-                <p class="text-sm text-gray-400 max-w-xs">
-                    Postdoctoral Researcher
-                    <br>Faculty of Aerospace Engineering
-                    <br>Delft University of Technology (TU Delft)
-                </p>
-                <div class="flex items-center text-gray-400 text-sm">
-                    <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i>
-                    Netherlands
+                <!-- Abstract Visual Representation -->
+                <div class="relative">
+                    <div class="w-64 h-64 lg:w-80 lg:h-80 rounded-2xl bg-gradient-to-tr from-slate-200 to-slate-100 rotate-3 overflow-hidden border-4 border-white shadow-2xl flex items-center justify-center">
+                        <span class="text-6xl text-slate-300"><i class="fas fa-user-graduate"></i></span>
+                        <!-- Placeholder for actual photo -->
+                        <!-- <img src="your-photo.jpg" alt="Chintan Jansari" class="w-full h-full object-cover"> -->
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-48 p-4 bg-white rounded-xl shadow-xl border border-slate-100">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-medium">Experience</p>
+                                <p class="text-sm font-bold text-primary">8+ Years in FEA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative bg elements -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-sky-50 rounded-full blur-3xl opacity-50 -z-10"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-indigo-50 rounded-full blur-3xl opacity-50 -z-10"></div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-primary mb-2">Professional Experience</h2>
+                <div class="w-16 h-1 bg-accent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="relative pl-8 lg:pl-0">
+                <!-- Vertical Line -->
+                <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 -ml-[1px]"></div>
+
+                <!-- Item 1 -->
+                <div class="relative mb-12 lg:mb-16 group">
+                    <div class="flex flex-col lg:flex-row items-center lg:justify-between w-full">
+                        <div class="lg:w-[45%] order-2 lg:order-1 lg:text-right">
+                            <div class="p-6 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                <h3 class="text-lg font-bold text-primary">Postdoctoral Researcher</h3>
+                                <p class="text-accent font-medium mb-1">Delft University of Technology</p>
+                                <p class="text-sm text-slate-400 mb-4"><i class="far fa-calendar-alt mr-1"></i> Apr 2024 - Ongoing</p>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Leading the NXTGEN project on Design for Tape-reinforced Additive Manufacturing (DFAM). Collaborating with CEAD B.V. and TNO. Developed in-house topology optimization tools for lightweight composite structures.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="absolute left-[-19px] lg:left-1/2 lg:-ml-[20px] w-10 h-10 rounded-full bg-accent border-4 border-white shadow-md flex items-center justify-center order-1 lg:order-2 z-10">
+                            <i class="fas fa-microscope text-white text-sm"></i>
+                        </div>
+                        <div class="lg:w-[45%] order-3 lg:order-3"></div>
+                    </div>
                 </div>
 
-                <!-- Contact Button -->
-                <a id="contact" href="#contact" class="mt-4 w-full md:w-auto py-3 px-8 rounded-xl font-semibold transition duration-300 transform hover:scale-[1.02] text-white" 
-                   style="background-color: var(--accent-pink); box-shadow: 0 4px 15px rgba(233, 89, 149, 0.4);">
-                    <div class="flex items-center justify-center">
-                        <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
-                        Contact
+                <!-- Item 2 -->
+                <div class="relative mb-12 lg:mb-16 group">
+                    <div class="flex flex-col lg:flex-row items-center lg:justify-between w-full">
+                        <div class="lg:w-[45%] order-3 lg:order-1"></div>
+                        <div class="absolute left-[-19px] lg:left-1/2 lg:-ml-[20px] w-10 h-10 rounded-full bg-white border-4 border-indigo-100 shadow-md flex items-center justify-center order-1 lg:order-2 z-10">
+                            <i class="fas fa-university text-indigo-600 text-sm"></i>
+                        </div>
+                        <div class="lg:w-[45%] order-2 lg:order-3 text-left">
+                             <div class="p-6 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                <h3 class="text-lg font-bold text-primary">Doctoral Researcher</h3>
+                                <p class="text-indigo-600 font-medium mb-1">University of Luxembourg</p>
+                                <p class="text-sm text-slate-400 mb-4"><i class="far fa-calendar-alt mr-1"></i> Jan 2020 - Jan 2024</p>
+                                <ul class="text-slate-600 text-sm leading-relaxed list-disc list-inside space-y-1">
+                                    <li>Design of Thermal Metamaterials using Isogeometric Structural Optimization.</li>
+                                    <li>Engineered thermal cloaks, concentrators (12x efficiency), and sensors.</li>
+                                    <li>Verified manufacturability adhering to constraints.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </a>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="relative mb-12 lg:mb-16 group">
+                    <div class="flex flex-col lg:flex-row items-center lg:justify-between w-full">
+                        <div class="lg:w-[45%] order-2 lg:order-1 lg:text-right">
+                            <div class="p-6 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                <h3 class="text-lg font-bold text-primary">Visiting Researcher</h3>
+                                <p class="text-slate-700 font-medium mb-1">University of Bordeaux</p>
+                                <p class="text-sm text-slate-400 mb-4"><i class="far fa-calendar-alt mr-1"></i> Mar 2023 - Jun 2023</p>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Designed Gyroid-based thermal cloaks for Functionally Graded Thermal Meta-Structures.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="absolute left-[-19px] lg:left-1/2 lg:-ml-[20px] w-10 h-10 rounded-full bg-white border-4 border-slate-100 shadow-md flex items-center justify-center order-1 lg:order-2 z-10">
+                            <i class="fas fa-plane text-slate-400 text-sm"></i>
+                        </div>
+                        <div class="lg:w-[45%] order-3 lg:order-3"></div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="relative mb-12 lg:mb-16 group">
+                    <div class="flex flex-col lg:flex-row items-center lg:justify-between w-full">
+                        <div class="lg:w-[45%] order-3 lg:order-1"></div>
+                        <div class="absolute left-[-19px] lg:left-1/2 lg:-ml-[20px] w-10 h-10 rounded-full bg-white border-4 border-slate-100 shadow-md flex items-center justify-center order-1 lg:order-2 z-10">
+                            <i class="fas fa-flask text-slate-400 text-sm"></i>
+                        </div>
+                        <div class="lg:w-[45%] order-2 lg:order-3 text-left">
+                             <div class="p-6 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                <h3 class="text-lg font-bold text-primary">Postgraduate Researcher</h3>
+                                <p class="text-slate-700 font-medium mb-1">Indian Institute of Technology Madras</p>
+                                <p class="text-sm text-slate-400 mb-4"><i class="far fa-calendar-alt mr-1"></i> Jul 2016 - Aug 2019</p>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Efficient Simulation of Hyperelastic Materials with Inclusions using XFEM. Co-developed adaptive phase-field method for quasi-brittle fracture.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Early Career -->
+                 <div class="text-center pt-4">
+                     <span class="inline-block px-4 py-2 rounded-full bg-slate-100 text-slate-500 text-sm font-medium border border-slate-200">
+                         Prior: L&T (2015-2016), Tata Motors (2015)
+                     </span>
+                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Card Grid -->
-    <div class="pt-8 space-y-12">
-        <div class="flex items-center space-x-3">
-            <i data-lucide="briefcase" class="w-6 h-6 text-gray-400"></i>
-            <h2 class="text-xl font-semibold text-gray-300">PORTFOLIO</h2>
-            <span class="text-sm font-light text-gray-500">| ACADEMIC HISTORY</span>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-primary mb-2">Technical Expertise</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">A comprehensive toolkit developed over years of academic and industrial collaboration.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Skill Card 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:border-accent/30 transition-colors">
+                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6 text-blue-600">
+                        <i class="fas fa-laptop-code text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Simulation & Analysis</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">Abaqus</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">COMSOL</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">ANSYS</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">FEniCS</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">FEM/XFEM</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">Solid Mechanics</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:border-accent/30 transition-colors">
+                    <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center mb-6 text-green-600">
+                        <i class="fas fa-code text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Programming & ML</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">Python</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">MATLAB</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">C/C++</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">Tensorflow</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">Scikit-learn</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">Numpy/Scipy</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:border-accent/30 transition-colors">
+                    <div class="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center mb-6 text-orange-600">
+                        <i class="fas fa-drafting-compass text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Design & Optimization</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">SOLIDWORKS</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">Fusion360</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">Creo</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">Topology Optimization</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">DFAM</span>
+                        <span class="px-3 py-1 bg-slate-50 text-slate-600 rounded-md text-sm border border-slate-200">Metamaterials</span>
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-
-            <!-- Card 1: Research Interests -->
-            <div class="unique-card p-8 relative card-accent-top-left flex flex-col space-y-6">
-                <div class="flex items-center space-x-3 text-gray-300">
-                    <i data-lucide="book-open" class="w-6 h-6 text-gray-400"></i>
-                    <h3 class="text-xl font-semibold">Research Interests</h3>
-                    <span class="text-xs font-light text-gray-500">| AREAS OF EXPERTISE</span>
-                </div>
-                
-                <div class="flex flex-wrap gap-3">
-                    <span class="skill-tag">Numerical Modeling & Simulations</span>
-                    <span class="skill-tag">Shape & Topology Optimization</span>
-                    <span class="skill-tag">Advanced Finite Element Methods</span>
-                    <span class="skill-tag">Design for Manufacturing</span>
-                    <span class="skill-tag">Mechanics of Solids</span>
-                    <span class="skill-tag">Material Modelling</span>
-                    <span class="skill-tag">Fracture Mechanics</span>
-                    <span class="skill-tag">Scientific Machine Learning</span>
-                </div>
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-white border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-primary">Education</h2>
             </div>
 
-            <!-- Card 2: Education -->
-            <div class="unique-card p-8 relative flex flex-col space-y-8">
-                <div class="flex items-center space-x-3 text-gray-300">
-                    <i data-lucide="graduation-cap" class="w-6 h-6 text-gray-400"></i>
-                    <h3 class="text-xl font-semibold">Education</h3>
-                    <span class="text-xs font-light text-gray-500">| ACADEMIC JOURNEY</span>
+            <div class="space-y-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center p-6 rounded-lg hover:bg-slate-50 transition-colors">
+                    <div>
+                        <h3 class="text-xl font-bold text-primary">PhD in Computational Science</h3>
+                        <p class="text-slate-600">University of Luxembourg</p>
+                    </div>
+                    <div class="mt-2 md:mt-0 text-right">
+                        <span class="block text-sm font-bold text-accent">2020 - 2024</span>
+                        <span class="block text-xs text-slate-400">Luxembourg</span>
+                    </div>
                 </div>
-                
-                <div class="relative space-y-8">
-                    <!-- Timeline items -->
-                    <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gray-600"></div>
 
-                    <!-- Item 1: PhD -->
-                    <div class="flex items-start pl-8 relative">
-                        <div class="absolute w-3 h-3 bg-[var(--accent-pink)] rounded-full -left-[1px] top-1"></div>
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-base">PhD in Computational Science</h4>
-                            <p class="text-sm text-gray-400">University of Luxembourg</p>
-                            <p class="text-xs text-gray-500">Luxembourg</p>
-                        </div>
-                        <span class="text-sm font-light text-gray-400 ml-4 whitespace-nowrap">2024</span>
+                <div class="w-full h-px bg-slate-100"></div>
+
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center p-6 rounded-lg hover:bg-slate-50 transition-colors">
+                    <div>
+                        <h3 class="text-xl font-bold text-primary">MS in Mechanical Engineering</h3>
+                        <p class="text-slate-600">Indian Institute of Technology Madras</p>
+                        <p class="text-xs text-green-600 mt-1 font-medium">GPA: 9.38/10</p>
                     </div>
-
-                    <!-- Item 2: MS -->
-                    <div class="flex items-start pl-8 relative">
-                        <div class="absolute w-3 h-3 bg-[var(--accent-pink)] rounded-full -left-[1px] top-1"></div>
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-base">MS in Mechanical Engineering</h4>
-                            <p class="text-sm text-gray-400">Indian Institute of Technology Madras</p>
-                            <p class="text-xs text-gray-500">Chennai, India</p>
-                        </div>
-                        <span class="text-sm font-light text-gray-400 ml-4 whitespace-nowrap">2019</span>
+                    <div class="mt-2 md:mt-0 text-right">
+                        <span class="block text-sm font-bold text-accent">2016 - 2019</span>
+                        <span class="block text-xs text-slate-400">Chennai, India</span>
                     </div>
-
-                    <!-- Item 3: BE -->
-                    <div class="flex items-start pl-8 relative">
-                        <div class="absolute w-3 h-3 bg-[var(--accent-pink)] rounded-full -left-[1px] top-1"></div>
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-base">BE in Mechanical Engineering</h4>
-                            <p class="text-sm text-gray-400">Gujarat Technological University</p>
-                            <p class="text-xs text-gray-500">Ahmedabad, India</p>
-                        </div>
-                        <span class="text-sm font-light text-gray-400 ml-4 whitespace-nowrap">2015</span>
-                    </div>
-
                 </div>
-            </div>
 
-            <!-- Card 3: Skills and Tools -->
-            <div class="unique-card p-8 relative flex flex-col space-y-6">
-                <div class="flex items-center space-x-3 text-gray-300">
-                    <i data-lucide="tool" class="w-6 h-6 text-gray-400"></i>
-                    <h3 class="text-xl font-semibold">Skills and Tools</h3>
-                    <span class="text-xs font-light text-gray-500">| EXPERTISE & PROFICIENCY</span>
-                </div>
-                
-                <div class="space-y-6">
-                    <!-- Programming Languages -->
-                    <div class="space-y-3">
-                        <p class="text-sm font-medium text-gray-400">Programming Languages:</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Tensorflow</span>
-                            <span class="skill-tag">C/C++</span>
-                            <span class="skill-tag">Javascript</span>
-                            <span class="skill-tag">Go</span>
-                            <span class="skill-tag">Julia</span>
-                        </div>
-                    </div>
+                <div class="w-full h-px bg-slate-100"></div>
 
-                    <!-- Simulation Tools -->
-                    <div class="space-y-3">
-                        <p class="text-sm font-medium text-gray-400">Simulation Tools:</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag">Abaqus</span>
-                            <span class="skill-tag">COMSOL</span>
-                            <span class="skill-tag">ANSYS</span>
-                            <span class="skill-tag">FEACS</span>
-                        </div>
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center p-6 rounded-lg hover:bg-slate-50 transition-colors">
+                    <div>
+                        <h3 class="text-xl font-bold text-primary">BE in Mechanical Engineering</h3>
+                        <p class="text-slate-600">Gujarat Technological University</p>
+                        <p class="text-xs text-green-600 mt-1 font-medium">GPA: 8.27/10</p>
                     </div>
-
-                    <!-- CAD Tools -->
-                    <div class="space-y-3">
-                        <p class="text-sm font-medium text-gray-400">CAD Tools:</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag">CATIA (3DEXPERIENCE)</span>
-                            <span class="skill-tag">Fusion360</span>
-                            <span class="skill-tag">Creo</span>
-                        </div>
-                    </div>
-
-                    <!-- Libraries -->
-                    <div class="space-y-3">
-                        <p class="text-sm font-medium text-gray-400">Libraries:</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag">Numpy</span>
-                            <span class="skill-tag">TensorFlow</span>
-                            <span class="skill-tag">Scipy</span>
-                            <span class="skill-tag">Pandas</span>
-                            <span class="skill-tag">Matplotlib</span>
-                            <span class="skill-tag">Scikit-learn</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Operating Systems -->
-                    <div class="space-y-3">
-                        <p class="text-sm font-medium text-gray-400">Operating Systems & Other:</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">GitHub</span>
-                            <span class="skill-tag">Adobe Suite</span>
-                            <span class="skill-tag">LaTeX</span>
-                            <span class="skill-tag">mSurfacae</span>
-                            <span class="skill-tag">Linux</span>
-                            <span class="skill-tag">Windows</span>
-                            <span class="skill-tag">MacOS</span>
-                        </div>
+                    <div class="mt-2 md:mt-0 text-right">
+                        <span class="block text-sm font-bold text-accent">2011 - 2015</span>
+                        <span class="block text-xs text-slate-400">Ahmedabad, India</span>
                     </div>
                 </div>
             </div>
-
-            <!-- Card 4: Computational Skills -->
-            <div class="unique-card p-8 relative card-accent-top-left flex flex-col space-y-6">
-                <div class="flex items-center space-x-3 text-gray-300">
-                    <i data-lucide="brain" class="w-6 h-6 text-gray-400"></i>
-                    <h3 class="text-xl font-semibold">Computational Skills</h3>
-                    <span class="text-xs font-light text-gray-500">| COMPUTATIONAL EXPERTISE</span>
-                </div>
-
-                <div class="space-y-6">
-                    <!-- Physics Domains -->
-                    <div class="space-y-3">
-                        <p class="text-sm font-medium text-gray-400">Physics Domains:</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag">Solid mechanics</span>
-                            <span class="skill-tag">Heat transfer</span>
-                            <span class="skill-tag">Acoustics</span>
-                            <span class="skill-tag">Fracture</span>
-                            <span class="skill-tag">Fluid dynamics</span>
-                            <span class="skill-tag">Multi-physics</span>
-                        </div>
-                    </div>
-
-                    <!-- Numerical Methods -->
-                    <div class="space-y-3">
-                        <p class="text-sm font-medium text-gray-400">Numerical Methods:</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag">FEM</span>
-                            <span class="skill-tag">XFEM</span>
-                            <span class="skill-tag">IGA</span>
-                            <span class="skill-tag">SPH</span>
-                            <span class="skill-tag">BEM</span>
-                            <span class="skill-tag">FVM</span>
-                            <span class="skill-tag">FFM</span>
-                            <span class="skill-tag">FDM</span>
-                        </div>
-                    </div>
-
-                    <!-- Optimization -->
-                    <div class="space-y-3">
-                        <p class="text-sm font-medium text-gray-400">Optimization:</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag">Shape Optimization</span>
-                            <span class="skill-tag">Topology Optimization</span>
-                            <span class="skill-tag">Gradient-based</span>
-                            <span class="skill-tag">Neural Network</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Material Modeling -->
-                    <div class="space-y-3">
-                        <p class="text-sm font-medium text-gray-400">Material Modeling:</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag">Hyper-elasticity</span>
-                            <span class="skill-tag">Laminates</span>
-                            <span class="skill-tag">Fiber Composites</span>
-                            <span class="skill-tag">Metamaterials</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Other -->
-                    <div class="space-y-3">
-                        <p class="text-sm font-medium text-gray-400">Other computational skills:</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag">Molecular Dynamics</span>
-                            <span class="skill-tag">Digital Twinning</span>
-                            <span class="skill-tag">Computational Design</span>
-                            <span class="skill-tag">SPAM</span>
-                            <span class="skill-tag">SFEM</span>
-                            <span class="skill-tag">MFX</span>
-                            <span class="skill-tag">Sustainability</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Computational Geometry -->
-                    <div class="space-y-3">
-                        <p class="text-sm font-medium text-gray-400">Computational Geometry:</p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag">Adaptive meshing</span>
-                            <span class="skill-tag">B-splines</span>
-                            <span class="skill-tag">NURBS</span>
-                            <span class="skill-tag">PhD spheres</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
+    </section>
 
-    <!-- Script to initialize Lucide icons -->
-    <script>
-        lucide.createIcons();
-    </script>
+    <!-- Research/Pubs Teaser -->
+    <section class="py-16 bg-primary text-white">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <i class="fas fa-book-open text-4xl mb-6 text-accent"></i>
+            <h2 class="text-3xl font-bold mb-4">Research Impact</h2>
+            <p class="text-slate-300 max-w-2xl mx-auto mb-8">
+                Author of 9+ peer-reviewed publications in composite structures and optimization. 
+                Active reviewer for journals including Structural & Multidisciplinary Optimization.
+            </p>
+            <a href="https://scholar.google.com/citations?user=0009-0003-4100-1165" target="_blank" class="inline-block px-8 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-sky-400 transition-colors">
+                View Publications on Google Scholar
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-10 bg-slate-900 text-white flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6">Get in touch</h3>
+                            <p class="text-slate-300 mb-8 text-sm leading-relaxed">
+                                I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+                            </p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="w-8 flex justify-center text-accent"><i class="fas fa-envelope"></i></div>
+                                    <span class="text-sm ml-2">cvjansari@gmail.com</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 flex justify-center text-accent"><i class="fas fa-phone"></i></div>
+                                    <span class="text-sm ml-2">+31 620766717</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 flex justify-center text-accent"><i class="fas fa-map-marker-alt"></i></div>
+                                    <span class="text-sm ml-2">Pierre van Hauwelaan 438, Delft</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                             <!-- Social Links Small -->
+                             <div class="flex space-x-4">
+                                <a href="#" class="text-slate-400 hover:text-white"><i class="fab fa-linkedin text-xl"></i></a>
+                                <a href="#" class="text-slate-400 hover:text-white"><i class="fas fa-graduation-cap text-xl"></i></a>
+                             </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-10">
+                        <form action="mailto:cvjansari@gmail.com" method="post" enctype="text/plain">
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-600 uppercase mb-2">Name</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-accent focus:outline-none transition-colors" placeholder="Your Name">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-600 uppercase mb-2">Email</label>
+                                    <input type="email" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-accent focus:outline-none transition-colors" placeholder="Your Email">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-600 uppercase mb-2">Message</label>
+                                    <textarea rows="4" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-accent focus:outline-none transition-colors" placeholder="How can I help you?"></textarea>
+                                </div>
+                                <button type="submit" class="w-full py-3 bg-primary text-white font-bold rounded-lg hover:bg-slate-800 transition-colors">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm">
+                &copy; 2024 Chintan Jansari. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
 </body>
 </html>
