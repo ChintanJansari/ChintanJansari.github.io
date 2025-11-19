@@ -1,53 +1,381 @@
-<button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-</div>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chintan Jansari - Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Define Custom Colors */
+        :root {
+            --bg-dark: #100f27; /* Deep Navy/Purple */
+            --card-dark: #1a1937; /* Slightly lighter card background */
+            --accent-pink: #E95995; /* Bright Magenta Accent */
+            --text-light: #F3F4F6;
+        }
 
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
 
-<main>
-<section class="hero">
-<div class="container">
-<h2>Hello — I'm <span class="accent">Chintan Jansari</span></h2>
-<p class="lead">I build web things. This is a minimal, responsive site you can deploy with GitHub Pages.</p>
-<p><a class="btn" href="#projects">See my work</a></p>
-</div>
-</section>
+        /* Styling for the unique card border/shape */
+        .unique-card {
+            border-radius: 1.5rem; /* Large initial rounding */
+            border: 1px solid var(--accent-pink); /* Accent border */
+            background-color: var(--card-dark);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), 0 0 15px rgba(233, 89, 149, 0.1); /* Subtle glow */
+        }
 
+        /* Specific style for the top-left accent circle on some cards */
+        .card-accent-top-left::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 25px;
+            height: 25px;
+            background-color: var(--accent-pink);
+            border-radius: 50%;
+            z-index: 10;
+        }
 
-<section id="about" class="container section">
-<h3>About</h3>
-<p>Write a short paragraph about yourself here — what you do, what you’re learning, and what you enjoy building.</p>
-</section>
+        /* Style for the skill/tool tags */
+        .skill-tag {
+            background-color: rgba(233, 89, 149, 0.15); /* Light accent background */
+            color: var(--accent-pink);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .skill-tag:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(233, 89, 149, 0.3);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12">
 
+    <!-- Header / Navigation -->
+    <header class="flex justify-between items-center pb-12 text-sm lg:text-base">
+        <div class="text-xl font-bold text-gray-50">Chintan Jansari</div>
+        <nav class="hidden lg:flex space-x-8 text-gray-400">
+            <a href="#about" class="hover:text-white transition duration-200">About</a>
+            <a href="#experience" class="hover:text-white transition duration-200">Experience</a>
+            <a href="#publications" class="hover:text-white transition duration-200">Publications</a>
+            <a href="#projects" class="hover:text-white transition duration-200">Projects</a>
+            <a href="#outreach" class="hover:text-white transition duration-200">Outreach</a>
+            <a href="#contact" class="hover:text-white transition duration-200">Contact</a>
+            <a href="#story" class="hover:text-white transition duration-200">Story</a>
+        </nav>
+    </header>
 
-<section id="projects" class="container section">
-<h3>Projects</h3>
-<div class="grid">
-<article class="card">
-<h4>Project One</h4>
-<p>Short description. <a href="#">View</a></p>
-</article>
-<article class="card">
-<h4>Project Two</h4>
-<p>Short description. <a href="#">View</a></p>
-</article>
-</div>
-</section>
+    <!-- Hero Section -->
+    <section id="about" class="flex flex-col lg:flex-row items-start gap-12 pb-24">
+        
+        <!-- Left Column: Bio -->
+        <div class="lg:w-3/5 space-y-6 text-gray-300">
+            <p class="text-lg leading-relaxed">
+                <span class="font-semibold text-white">PhD-trained Computational Engineer</span> with 8+ years of experience in physics-based simulations, finite element modeling, topology optimization, and computational design. Expert at explicit C++/Cuda and Python programming, development of high-performance solvers, and robust parametrization workflows.
+            </p>
+            <p class="text-base leading-relaxed">
+                Expert at explicit C++/Cuda and Python programming, developing scalable, high-performance solutions. Expertise includes: finite element modeling, topology optimization, multiphysics simulation, additive manufacturing, data analysis, and advanced numerical methods. Proficient in Python, C++, MATLAB, and numerical algorithms, with experience translating complex scientific requirements into production-ready software, leading mentoring teams, developing reusable CAD work-flows, and bridging academic research with industrial product development for scalable, high-performance solutions.
+            </p>
+            <!-- Social Links -->
+            <div class="flex flex-wrap items-center gap-6 pt-4 text-gray-400">
+                <a href="#" class="hover:text-white transition duration-200" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-white transition duration-200" aria-label="Google Scholar"><i data-lucide="graduation-cap" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-white transition duration-200" aria-label="ResearchGate"><i data-lucide="book-open-check" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-white transition duration-200" aria-label="GitHub"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-white transition duration-200" aria-label="ORCID"><i data-lucide="dribbble" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-white transition duration-200" aria-label="CV Link"><span class="border border-gray-400 px-3 py-1 rounded-full text-xs font-medium">CV</span></a>
+            </div>
+        </div>
 
+        <!-- Right Column: Profile Card -->
+        <div class="lg:w-2/5 w-full bg-[#1a1937] p-8 rounded-3xl shadow-2xl relative overflow-hidden">
+            <div class="flex flex-col items-center text-center space-y-6">
+                <!-- Profile Image -->
+                <div class="w-36 h-36 rounded-full border-4 border-gray-700 overflow-hidden shadow-xl">
+                    <!-- Placeholder image URL mimicking the user's uploaded image -->
+                    <img src="https://placehold.co/144x144/2c2c54/E95995?text=CJ" 
+                         alt="Chintan Jansari Profile" 
+                         class="w-full h-full object-cover">
+                </div>
+                
+                <h1 class="text-3xl font-bold text-white">Chintan Jansari</h1>
+                <p class="text-sm text-gray-400 max-w-xs">
+                    Postdoctoral Researcher
+                    <br>Faculty of Aerospace Engineering
+                    <br>Delft University of Technology (TU Delft)
+                </p>
+                <div class="flex items-center text-gray-400 text-sm">
+                    <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i>
+                    Netherlands
+                </div>
 
-<section id="contact" class="container section">
-<h3>Contact</h3>
-<p>If you'd like to reach out, email me at <a href="mailto:your.email@example.com">cjansari@gmail.com</a>.</p>
-</section>
-</main>
+                <!-- Contact Button -->
+                <a id="contact" href="#contact" class="mt-4 w-full md:w-auto py-3 px-8 rounded-xl font-semibold transition duration-300 transform hover:scale-[1.02] text-white" 
+                   style="background-color: var(--accent-pink); box-shadow: 0 4px 15px rgba(233, 89, 149, 0.4);">
+                    <div class="flex items-center justify-center">
+                        <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
+                        Contact
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
+    <!-- Portfolio Card Grid -->
+    <div class="pt-8 space-y-12">
+        <div class="flex items-center space-x-3">
+            <i data-lucide="briefcase" class="w-6 h-6 text-gray-400"></i>
+            <h2 class="text-xl font-semibold text-gray-300">PORTFOLIO</h2>
+            <span class="text-sm font-light text-gray-500">| ACADEMIC HISTORY</span>
+        </div>
 
-<footer class="site-footer">
-<div class="container">
-<small>© <span id="year"></span> Chintan Jansari. Built with ♥ and GitHub Pages.</small>
-</div>
-</footer>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
+            <!-- Card 1: Research Interests -->
+            <div class="unique-card p-8 relative card-accent-top-left flex flex-col space-y-6">
+                <div class="flex items-center space-x-3 text-gray-300">
+                    <i data-lucide="book-open" class="w-6 h-6 text-gray-400"></i>
+                    <h3 class="text-xl font-semibold">Research Interests</h3>
+                    <span class="text-xs font-light text-gray-500">| AREAS OF EXPERTISE</span>
+                </div>
+                
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-tag">Numerical Modeling & Simulations</span>
+                    <span class="skill-tag">Shape & Topology Optimization</span>
+                    <span class="skill-tag">Advanced Finite Element Methods</span>
+                    <span class="skill-tag">Design for Manufacturing</span>
+                    <span class="skill-tag">Mechanics of Solids</span>
+                    <span class="skill-tag">Material Modelling</span>
+                    <span class="skill-tag">Fracture Mechanics</span>
+                    <span class="skill-tag">Scientific Machine Learning</span>
+                </div>
+            </div>
 
-<script src="assets/js/main.js"></script>
+            <!-- Card 2: Education -->
+            <div class="unique-card p-8 relative flex flex-col space-y-8">
+                <div class="flex items-center space-x-3 text-gray-300">
+                    <i data-lucide="graduation-cap" class="w-6 h-6 text-gray-400"></i>
+                    <h3 class="text-xl font-semibold">Education</h3>
+                    <span class="text-xs font-light text-gray-500">| ACADEMIC JOURNEY</span>
+                </div>
+                
+                <div class="relative space-y-8">
+                    <!-- Timeline items -->
+                    <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gray-600"></div>
+
+                    <!-- Item 1: PhD -->
+                    <div class="flex items-start pl-8 relative">
+                        <div class="absolute w-3 h-3 bg-[var(--accent-pink)] rounded-full -left-[1px] top-1"></div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-base">PhD in Computational Science</h4>
+                            <p class="text-sm text-gray-400">University of Luxembourg</p>
+                            <p class="text-xs text-gray-500">Luxembourg</p>
+                        </div>
+                        <span class="text-sm font-light text-gray-400 ml-4 whitespace-nowrap">2024</span>
+                    </div>
+
+                    <!-- Item 2: MS -->
+                    <div class="flex items-start pl-8 relative">
+                        <div class="absolute w-3 h-3 bg-[var(--accent-pink)] rounded-full -left-[1px] top-1"></div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-base">MS in Mechanical Engineering</h4>
+                            <p class="text-sm text-gray-400">Indian Institute of Technology Madras</p>
+                            <p class="text-xs text-gray-500">Chennai, India</p>
+                        </div>
+                        <span class="text-sm font-light text-gray-400 ml-4 whitespace-nowrap">2019</span>
+                    </div>
+
+                    <!-- Item 3: BE -->
+                    <div class="flex items-start pl-8 relative">
+                        <div class="absolute w-3 h-3 bg-[var(--accent-pink)] rounded-full -left-[1px] top-1"></div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-base">BE in Mechanical Engineering</h4>
+                            <p class="text-sm text-gray-400">Gujarat Technological University</p>
+                            <p class="text-xs text-gray-500">Ahmedabad, India</p>
+                        </div>
+                        <span class="text-sm font-light text-gray-400 ml-4 whitespace-nowrap">2015</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Card 3: Skills and Tools -->
+            <div class="unique-card p-8 relative flex flex-col space-y-6">
+                <div class="flex items-center space-x-3 text-gray-300">
+                    <i data-lucide="tool" class="w-6 h-6 text-gray-400"></i>
+                    <h3 class="text-xl font-semibold">Skills and Tools</h3>
+                    <span class="text-xs font-light text-gray-500">| EXPERTISE & PROFICIENCY</span>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- Programming Languages -->
+                    <div class="space-y-3">
+                        <p class="text-sm font-medium text-gray-400">Programming Languages:</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Tensorflow</span>
+                            <span class="skill-tag">C/C++</span>
+                            <span class="skill-tag">Javascript</span>
+                            <span class="skill-tag">Go</span>
+                            <span class="skill-tag">Julia</span>
+                        </div>
+                    </div>
+
+                    <!-- Simulation Tools -->
+                    <div class="space-y-3">
+                        <p class="text-sm font-medium text-gray-400">Simulation Tools:</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag">Abaqus</span>
+                            <span class="skill-tag">COMSOL</span>
+                            <span class="skill-tag">ANSYS</span>
+                            <span class="skill-tag">FEACS</span>
+                        </div>
+                    </div>
+
+                    <!-- CAD Tools -->
+                    <div class="space-y-3">
+                        <p class="text-sm font-medium text-gray-400">CAD Tools:</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag">CATIA (3DEXPERIENCE)</span>
+                            <span class="skill-tag">Fusion360</span>
+                            <span class="skill-tag">Creo</span>
+                        </div>
+                    </div>
+
+                    <!-- Libraries -->
+                    <div class="space-y-3">
+                        <p class="text-sm font-medium text-gray-400">Libraries:</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag">Numpy</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">Scipy</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Scikit-learn</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Operating Systems -->
+                    <div class="space-y-3">
+                        <p class="text-sm font-medium text-gray-400">Operating Systems & Other:</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Adobe Suite</span>
+                            <span class="skill-tag">LaTeX</span>
+                            <span class="skill-tag">mSurfacae</span>
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">Windows</span>
+                            <span class="skill-tag">MacOS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Computational Skills -->
+            <div class="unique-card p-8 relative card-accent-top-left flex flex-col space-y-6">
+                <div class="flex items-center space-x-3 text-gray-300">
+                    <i data-lucide="brain" class="w-6 h-6 text-gray-400"></i>
+                    <h3 class="text-xl font-semibold">Computational Skills</h3>
+                    <span class="text-xs font-light text-gray-500">| COMPUTATIONAL EXPERTISE</span>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Physics Domains -->
+                    <div class="space-y-3">
+                        <p class="text-sm font-medium text-gray-400">Physics Domains:</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag">Solid mechanics</span>
+                            <span class="skill-tag">Heat transfer</span>
+                            <span class="skill-tag">Acoustics</span>
+                            <span class="skill-tag">Fracture</span>
+                            <span class="skill-tag">Fluid dynamics</span>
+                            <span class="skill-tag">Multi-physics</span>
+                        </div>
+                    </div>
+
+                    <!-- Numerical Methods -->
+                    <div class="space-y-3">
+                        <p class="text-sm font-medium text-gray-400">Numerical Methods:</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag">FEM</span>
+                            <span class="skill-tag">XFEM</span>
+                            <span class="skill-tag">IGA</span>
+                            <span class="skill-tag">SPH</span>
+                            <span class="skill-tag">BEM</span>
+                            <span class="skill-tag">FVM</span>
+                            <span class="skill-tag">FFM</span>
+                            <span class="skill-tag">FDM</span>
+                        </div>
+                    </div>
+
+                    <!-- Optimization -->
+                    <div class="space-y-3">
+                        <p class="text-sm font-medium text-gray-400">Optimization:</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag">Shape Optimization</span>
+                            <span class="skill-tag">Topology Optimization</span>
+                            <span class="skill-tag">Gradient-based</span>
+                            <span class="skill-tag">Neural Network</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Material Modeling -->
+                    <div class="space-y-3">
+                        <p class="text-sm font-medium text-gray-400">Material Modeling:</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag">Hyper-elasticity</span>
+                            <span class="skill-tag">Laminates</span>
+                            <span class="skill-tag">Fiber Composites</span>
+                            <span class="skill-tag">Metamaterials</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Other -->
+                    <div class="space-y-3">
+                        <p class="text-sm font-medium text-gray-400">Other computational skills:</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag">Molecular Dynamics</span>
+                            <span class="skill-tag">Digital Twinning</span>
+                            <span class="skill-tag">Computational Design</span>
+                            <span class="skill-tag">SPAM</span>
+                            <span class="skill-tag">SFEM</span>
+                            <span class="skill-tag">MFX</span>
+                            <span class="skill-tag">Sustainability</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Computational Geometry -->
+                    <div class="space-y-3">
+                        <p class="text-sm font-medium text-gray-400">Computational Geometry:</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag">Adaptive meshing</span>
+                            <span class="skill-tag">B-splines</span>
+                            <span class="skill-tag">NURBS</span>
+                            <span class="skill-tag">PhD spheres</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script to initialize Lucide icons -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
