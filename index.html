@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chintan Jansari | Computational Specialist</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Manrope:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* --- RESET & BASE STYLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
+        /* --- RESET & VARIABLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
             --bg-color: #0a0a0a;
+            --card-bg: #141414;
             --text-color: #f0f0f0;
-            --accent-color: #888888;
+            --text-muted: #888888;
+            --accent-color: #ffffff;
             --border-color: #333333;
-            --hover-color: #ffffff;
+            --timeline-line: #444;
         }
 
         body {
@@ -29,420 +31,582 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
-            cursor: default;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.3s ease;
-        }
-
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
-
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3 {
-            font-family: 'Manrope', sans-serif;
-            font-weight: 400;
-        }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
         /* --- HEADER --- */
         header {
-            padding: 2rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 1.5rem 0;
             position: fixed;
             top: 0;
             width: 100%;
             background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
             z-index: 100;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s;
-        }
-
-        header.scrolled {
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         nav ul {
             display: flex;
-            gap: 2rem;
+            justify-content: center;
+            gap: 2.5rem;
         }
 
         nav a {
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--accent-color);
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
-        nav a:hover {
-            color: var(--text-color);
-        }
+        nav a:hover { color: var(--accent-color); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO --- */
         .hero {
-            height: 100vh;
+            min-height: 90vh;
             display: flex;
-            align-items: center;
-            padding-top: 60px;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 80px;
         }
 
-        .hero-text {
-            font-size: clamp(2rem, 5vw, 4.5rem);
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
             line-height: 1.1;
-            max-width: 90%;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero-sub {
-            margin-top: 2rem;
+        .hero p {
             font-size: 1.2rem;
-            color: var(--accent-color);
+            color: var(--text-muted);
             max-width: 600px;
+            margin-bottom: 2rem;
         }
 
-        /* --- PROJECT LIST (Reino Style) --- */
-        .works-section {
-            padding: 100px 0;
+        .social-hero {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 1.5rem;
         }
 
-        .section-header {
-            font-size: 1rem;
+        .social-hero a:hover { transform: translateY(-3px); color: #fff; }
+
+        /* --- SECTIONS COMMON --- */
+        section { padding: 100px 0; border-top: 1px solid var(--border-color); }
+        
+        .section-title {
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-color);
+            letter-spacing: 3px;
+            color: var(--text-muted);
             margin-bottom: 3rem;
             display: block;
         }
 
-        .project-list {
-            border-top: 1px solid var(--border-color);
-        }
-
+        /* --- PROJECT LIST (Reino Style) --- */
         .project-item {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            padding: 2.5rem 0;
+            align-items: center;
+            padding: 2rem 0;
             border-bottom: 1px solid var(--border-color);
             cursor: pointer;
             transition: all 0.4s ease;
-            position: relative;
         }
 
         .project-item:hover {
             padding-left: 20px;
-            background-color: #111;
+            background: #111;
         }
 
-        .project-item:hover .project-title {
-            color: #fff;
-        }
+        .project-title { font-size: 2rem; font-weight: 300; }
+        .project-cat { color: var(--text-muted); }
+        .project-arrow { opacity: 0; transition: 0.3s; }
+        .project-item:hover .project-arrow { opacity: 1; transform: translateX(10px); }
 
-        .project-item:hover .project-cat {
-            color: #fff;
-        }
-
-        .project-title {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            color: #ccc;
-            transition: color 0.4s ease;
-        }
-
-        .project-meta {
-            text-align: right;
-        }
-
-        .project-cat {
-            display: block;
-            font-size: 1rem;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-            transition: color 0.4s ease;
-        }
-
-        .project-loc {
-            font-size: 0.85rem;
-            color: #555;
-            text-transform: uppercase;
-        }
-
-        /* --- ABOUT / SERVICES --- */
-        .about-section {
-            padding: 100px 0;
+        /* --- SKILLS (Fancy Grid) --- */
+        .skills-grid {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
         }
 
-        .about-text p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+        .skill-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #222;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: #555;
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             color: #ddd;
         }
 
-        .services-grid {
+        .skill-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background: #222;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #aaa;
+        }
+
+        /* --- EDUCATION TIMELINE --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--timeline-line);
+        }
+
+        .timeline-item {
+            padding-left: 2rem;
+            padding-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: var(--bg-color);
+            border: 2px solid #fff;
+            border-radius: 50%;
+        }
+
+        .edu-date { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem; display: block; }
+        .edu-degree { font-size: 1.4rem; font-weight: 600; color: #fff; }
+        .edu-uni { font-size: 1.1rem; color: #aaa; margin-bottom: 1rem; }
+        .edu-desc { color: #888; font-size: 0.95rem; }
+
+        /* --- HOBBIES --- */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .hobby-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .hobby-img-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            height: 200px;
+        }
+
+        .hobby-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #222; /* Placeholder color */
+        }
+
+        .hobby-content { padding: 1.5rem; }
+        .hobby-title { font-size: 1.3rem; margin-bottom: 0.5rem; color: #fff; }
+        .hobby-desc { font-size: 0.9rem; color: #888; }
+
+        /* --- PROJECT OVERLAY (The "New Page" Effect) --- */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-color);
+            z-index: 200;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            padding: 4rem 2rem;
+        }
+
+        .overlay.active { transform: translateY(0); }
+
+        .close-btn {
+            position: fixed;
+            top: 2rem; right: 2rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #fff;
+            z-index: 201;
+        }
+
+        .overlay-content { max-width: 900px; margin: 0 auto 4rem auto; }
+        .overlay-header { margin-bottom: 3rem; border-bottom: 1px solid #333; padding-bottom: 2rem; }
+        .overlay-title { font-size: 3rem; line-height: 1.1; margin-bottom: 1rem; }
+        .overlay-meta { display: flex; gap: 2rem; color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; }
+        
+        .overlay-body h3 { color: #fff; margin: 2rem 0 1rem 0; }
+        .overlay-body p { font-size: 1.1rem; color: #ccc; margin-bottom: 1.5rem; }
+        
+        .overlay-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            gap: 1rem;
+            margin: 3rem 0;
         }
-
-        .service-card h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .service-card ul li {
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
+        .overlay-img {
+            width: 100%;
+            height: 200px;
+            background: #222;
+            object-fit: cover;
+            border-radius: 8px;
         }
 
         /* --- FOOTER --- */
-        footer {
-            padding: 100px 0 50px;
-            border-top: 1px solid var(--border-color);
-        }
+        footer { padding: 5rem 0; text-align: center; }
+        .footer-socials { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; font-size: 1.5rem; }
 
-        .footer-cta {
-            font-size: clamp(2rem, 6vw, 5rem);
-            line-height: 1;
-            margin-bottom: 4rem;
-        }
-
-        .footer-cta a {
-            color: var(--text-color);
-        }
-
-        .footer-cta a:hover {
-            color: var(--accent-color);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 3rem;
-            font-size: 1rem;
-        }
-
-        .footer-meta {
-            margin-top: 4rem;
-            color: #444;
-            font-size: 0.8rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        /* --- ANIMATIONS --- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile tweaks */
-        @media (max-width: 768px) {
-            .about-section {
-                grid-template-columns: 1fr;
-            }
-            .project-item {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .project-meta {
-                text-align: left;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <header class="container">
-        <div class="logo">CHINTAN JANSARI</div>
-        <nav>
+    <header>
+        <nav class="container">
             <ul>
                 <li><a href="#works">Works</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section class="hero container fade-in">
+    <section class="hero container">
+        <h1>Chintan Jansari.<br>Computational Specialist.</h1>
+        <p>PhD-trained engineer bridging the gap between Theoretical Mechanics, Topology Optimization, and Additive Manufacturing.</p>
+        
+        <div class="social-hero">
+            <a href="https://www.linkedin.com/in/chintan-jansari-009578170" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:cvjansari@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://scholar.google.com/" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <section id="works" class="container">
+        <span class="section-title">Selected Works</span>
+        
+        <div class="project-item" onclick="openProject('nxtgen')">
             <div>
-                <h1 class="hero-text">
-                    PhD Computational Specialist.<br>
-                    Optimizing the future of<br>
-                    Design & Manufacturing.
-                </h1>
-                <p class="hero-sub">
-                    Specializing in Topology Optimization, Finite Element Analysis (FEA), and Design for Additive Manufacturing (DfAM).
-                </p>
+                <h3 class="project-title">NXTGEN E-Mobility</h3>
+                <span class="project-cat">Design for Additive Manufacturing | Delft, NL</span>
             </div>
-        </section>
+            <i class="fas fa-arrow-right project-arrow"></i>
+        </div>
 
-        <section id="works" class="works-section container fade-in">
-            <span class="section-header">Selected Projects & Research</span>
-            
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-title">NXTGEN E-Mobility</div>
-                    <div class="project-meta">
-                        <span class="project-cat">Design for Tape-Reinforced AM</span>
-                        <span class="project-loc">Delft, Netherlands (Current)</span>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-title">Thermal Metamaterials</div>
-                    <div class="project-meta">
-                        <span class="project-cat">Isogeometric Structural Optimization</span>
-                        <span class="project-loc">Luxembourg (PhD Thesis)</span>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-title">Sustainable Composites</div>
-                    <div class="project-meta">
-                        <span class="project-cat">Carbon vs. Natural Fiber Optimization</span>
-                        <span class="project-loc">Delft University of Technology</span>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-title">Acoustic Simulation</div>
-                    <div class="project-meta">
-                        <span class="project-cat">Enriched IGA / High-Precision FEM</span>
-                        <span class="project-loc">University of Luxembourg</span>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-title">Hyperelastic Simulation</div>
-                    <div class="project-meta">
-                        <span class="project-cat">Adaptive SSXFEM & Phase Field</span>
-                        <span class="project-loc">IIT Madras</span>
-                    </div>
-                </div>
+        <div class="project-item" onclick="openProject('thermal')">
+            <div>
+                <h3 class="project-title">Thermal Metamaterials</h3>
+                <span class="project-cat">Isogeometric Optimization | Luxembourg</span>
             </div>
-        </section>
+            <i class="fas fa-arrow-right project-arrow"></i>
+        </div>
 
-        <section id="about" class="about-section container fade-in">
-            <div class="about-label">
-                <span class="section-header">Profile</span>
+        <div class="project-item" onclick="openProject('sustainable')">
+            <div>
+                <h3 class="project-title">Sustainable Composites</h3>
+                <span class="project-cat">Carbon vs Natural Fiber Optimization</span>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I am a Postdoctoral Researcher at TU Delft with over 8 years of experience in physics-based simulation and computational geometry.
-                    </p>
-                    <p>
-                        My work bridges the gap between theoretical mechanics and advanced manufacturing. I develop algorithms that integrate manufacturing constraints into the optimization process, leveraging the design freedom of additive manufacturing to create eco-efficient, high-performance structures.
-                    </p>
-                </div>
-
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h4>Core Competencies</h4>
-                        <ul>
-                            <li>Computational Mechanics</li>
-                            <li>Topology Optimization</li>
-                            <li>Finite Element Methods (FEM/IGA)</li>
-                            <li>Design for Additive Mfg (DfAM)</li>
-                            <li>Composite Materials</li>
-                        </ul>
-                    </div>
-                    <div class="service-card">
-                        <h4>Technical Stack</h4>
-                        <ul>
-                            <li>Python, C++, Matlab</li>
-                            <li>Abaqus, COMSOL, ANSYS</li>
-                            <li>SolidWorks, Fusion360</li>
-                            <li>Tensorflow, Scikit-learn</li>
-                        </ul>
-                    </div>
-                    <div class="service-card">
-                        <h4>Research Areas</h4>
-                        <ul>
-                            <li>Metamaterials</li>
-                            <li>Multi-physics Simulation</li>
-                            <li>Generative Design</li>
-                            <li>Sustainable Engineering</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer id="contact" class="container fade-in">
-        <span class="section-header">Get in touch</span>
-        <div class="footer-cta">
-            <a href="mailto:cvjansari@gmail.com">cvjansari@gmail.com</a>
+            <i class="fas fa-arrow-right project-arrow"></i>
         </div>
         
-        <div class="footer-links">
-            <a href="https://www.linkedin.com/in/chintan-jansari-009578170" target="_blank">LinkedIn</a>
-            <a href="https://scholar.google.com/" target="_blank">Google Scholar</a>
-            <a href="#">ResearchGate</a>
+        <div class="project-item" onclick="openProject('hyper')">
+            <div>
+                <h3 class="project-title">Hyperelastic Simulation</h3>
+                <span class="project-cat">Adaptive SSXFEM | IIT Madras</span>
+            </div>
+            <i class="fas fa-arrow-right project-arrow"></i>
         </div>
+    </section>
 
-        <div class="footer-meta">
-            <span>&copy; 2025 Chintan Jansari</span>
-            <span>Based in Delft, South Holland</span>
+    <section id="education" class="container">
+        <span class="section-title">Education</span>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <span class="edu-date">Jan 2020 - Jan 2024</span>
+                <h3 class="edu-degree">PhD in Computational Science</h3>
+                <div class="edu-uni">University of Luxembourg</div>
+                <p class="edu-desc">
+                    Thesis: Design of Thermal Metamaterials using Isogeometric Structural Optimization.<br>
+                    Created a computational design platform for thermal cloaking and concentration.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <span class="edu-date">July 2016 - Aug 2019</span>
+                <h3 class="edu-degree">MS in Mechanical Engineering</h3>
+                <div class="edu-uni">Indian Institute of Technology (IIT), Madras</div>
+                <p class="edu-desc">
+                    Specialized in Design. GPA: 9.38/10.<br>
+                    Thesis: Efficient Simulation of Hyperelastic Materials with Inclusions (XFEM).
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <span class="edu-date">June 2011 - June 2015</span>
+                <h3 class="edu-degree">BE in Mechanical Engineering</h3>
+                <div class="edu-uni">L.D. College of Engineering (GTU)</div>
+                <p class="edu-desc">GPA: 8.27/10. Foundation in mechanical design and manufacturing.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <span class="section-title">Technical Arsenal</span>
+        <div class="skills-grid">
+            
+            <div class="skill-card">
+                <i class="fas fa-code skill-icon"></i>
+                <div class="skill-name">Programming</div>
+                <div class="skill-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">MATLAB</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fas fa-wind skill-icon"></i>
+                <div class="skill-name">Simulation (FEA)</div>
+                <div class="skill-tags">
+                    <span class="tag">Abaqus</span>
+                    <span class="tag">COMSOL</span>
+                    <span class="tag">ANSYS</span>
+                    <span class="tag">FEniCS</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fas fa-cubes skill-icon"></i>
+                <div class="skill-name">CAD & Design</div>
+                <div class="skill-tags">
+                    <span class="tag">SolidWorks</span>
+                    <span class="tag">Fusion 360</span>
+                    <span class="tag">Creo</span>
+                    <span class="tag">Rhino</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fas fa-brain skill-icon"></i>
+                <div class="skill-name">AI & Optimization</div>
+                <div class="skill-tags">
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">Scikit-learn</span>
+                    <span class="tag">Topology Opt.</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="hobbies" class="container">
+        <span class="section-title">Life & Interests</span>
+        <div class="hobbies-grid">
+            
+            <div class="hobby-card">
+                <div class="hobby-img-grid">
+                    <img src="https://via.placeholder.com/150/333" class="hobby-img" alt="Hobby 1">
+                    <img src="https://via.placeholder.com/150/444" class="hobby-img" alt="Hobby 2">
+                    <img src="https://via.placeholder.com/150/555" class="hobby-img" alt="Hobby 3">
+                    <img src="https://via.placeholder.com/150/666" class="hobby-img" alt="Hobby 4">
+                </div>
+                <div class="hobby-content">
+                    <h4 class="hobby-title">Photography</h4>
+                    <p class="hobby-desc">
+                        I enjoy capturing landscapes and urban geometry. It helps me appreciate the patterns in nature and architecture, much like my work in topology optimization.
+                    </p>
+                </div>
+            </div>
+
+            <div class="hobby-card">
+                <div class="hobby-img-grid">
+                     <img src="https://via.placeholder.com/150/333" class="hobby-img">
+                    <img src="https://via.placeholder.com/150/444" class="hobby-img">
+                    <img src="https://via.placeholder.com/150/555" class="hobby-img">
+                    <img src="https://via.placeholder.com/150/666" class="hobby-img">
+                </div>
+                <div class="hobby-content">
+                    <h4 class="hobby-title">3D Printing & Making</h4>
+                    <p class="hobby-desc">
+                        My research isn't just theoretical. I love tinkering with FDM printers, testing new filaments, and prototyping functional parts for my home.
+                    </p>
+                </div>
+            </div>
+
+            <div class="hobby-card">
+                <div class="hobby-img-grid">
+                     <img src="https://via.placeholder.com/150/333" class="hobby-img">
+                    <img src="https://via.placeholder.com/150/444" class="hobby-img">
+                    <img src="https://via.placeholder.com/150/555" class="hobby-img">
+                    <img src="https://via.placeholder.com/150/666" class="hobby-img">
+                </div>
+                <div class="hobby-content">
+                    <h4 class="hobby-title">Hiking & Travel</h4>
+                    <p class="hobby-desc">
+                        Living in Europe has given me the chance to explore the Alps and various cultures. Hiking clears my mind and offers fresh perspectives.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <span class="section-title">Contact Me</span>
+            <div class="footer-socials">
+                <a href="mailto:cvjansari@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/chintan-jansari-009578170" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fas fa-globe"></i></a>
+            </div>
+            <p style="color: #666; font-size: 0.8rem;">&copy; 2025 Chintan Jansari. Based in Delft, NL.</p>
         </div>
     </footer>
 
+    <div id="project-overlay" class="overlay">
+        <div class="close-btn" onclick="closeProject()">&times;</div>
+        <div class="container overlay-content">
+            <div id="overlay-data">
+                </div>
+        </div>
+    </div>
+
     <script>
-        // --- INTERSECTION OBSERVER FOR FADE-IN ---
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
+        // PROJECT DATA
+        const projects = {
+            nxtgen: {
+                title: "NXTGEN E-Mobility",
+                timeline: "April 2024 - Present",
+                location: "Delft, Netherlands",
+                description: "Leading the computational design for the NXTGEN project, collaborating with CEAD B.V. and TNO. The goal is to align design workflows with manufacturing insights for tape-reinforced additive manufacturing (ATLAM).",
+                impact: "Developed an in-house topology optimization tool that improved DFM efficiency. Engineered sustainable composites optimized for reduced CO2 footprint.",
+                images: [
+                    "https://via.placeholder.com/600x300/222?text=Optimization+Result",
+                    "https://via.placeholder.com/600x300/333?text=3D+Printing+Process",
+                    "https://via.placeholder.com/600x300/444?text=Composite+Structure"
+                ]
+            },
+            thermal: {
+                title: "Thermal Metamaterials",
+                timeline: "Jan 2020 - Jan 2024",
+                location: "University of Luxembourg",
+                description: "PhD Thesis work focused on creating a computational design platform for thermal metamaterials using Isogeometric Structural Optimization. Designed thermal cloaks, concentrators, and rotators.",
+                impact: "Achieved 12x efficiency improvement in thermal concentrators. Verified manufacturability across complex geometries.",
+                images: [
+                    "https://via.placeholder.com/600x300/222?text=Thermal+Cloak",
+                    "https://via.placeholder.com/600x300/333?text=Heat+Map+Simulation"
+                ]
+            },
+            sustainable: {
+                title: "Sustainable Composites",
+                timeline: "Research Project",
+                location: "TU Delft",
+                description: "Co-developing eco-efficient, multi-material continuous-fiber composites. The project intelligently allocates carbon vs. natural fibers for balanced performance.",
+                impact: "Balanced structural stiffness with reduced CO2 emissions by combining carbon and natural fibers.",
+                images: [
+                    "https://via.placeholder.com/600x300/222?text=Fiber+Layout",
+                    "https://via.placeholder.com/600x300/333?text=Sustainability+Graph"
+                ]
+            },
+            hyper: {
+                title: "Hyperelastic Simulation",
+                timeline: "2016 - 2019",
+                location: "IIT Madras",
+                description: "Developed an Adaptive Smoothed Stable Extended Finite Element Method (SSXFEM) tailored for hyperelastic materials with inclusions.",
+                impact: "Showcased improved accuracy and computational efficiency against benchmark problems.",
+                images: [
+                    "https://via.placeholder.com/600x300/222?text=Mesh+Deformation",
+                    "https://via.placeholder.com/600x300/333?text=Stress+Analysis"
+                ]
+            }
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+        function openProject(id) {
+            const p = projects[id];
+            if(!p) return;
 
-        document.querySelectorAll('.fade-in').forEach((element) => {
-            observer.observe(element);
-        });
+            const html = `
+                <div class="overlay-header">
+                    <div class="overlay-meta">
+                        <span>${p.timeline}</span>
+                        <span>${p.location}</span>
+                    </div>
+                    <h2 class="overlay-title">${p.title}</h2>
+                </div>
+                <div class="overlay-body">
+                    <h3>Description</h3>
+                    <p>${p.description}</p>
+                    
+                    <h3>Key Impact</h3>
+                    <p>${p.impact}</p>
 
-        // --- HEADER SCROLL EFFECT ---
-        const header = document.querySelector('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+                    <div class="overlay-gallery">
+                        ${p.images.map(img => `<img src="${img}" class="overlay-img">`).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('overlay-data').innerHTML = html;
+            document.getElementById('project-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeProject() {
+            document.getElementById('project-overlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
     </script>
+
 </body>
 </html>
